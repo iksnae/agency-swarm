@@ -1,59 +1,66 @@
 # Agent
 
-## Overview
+## Purpose
 
-The `Agent` class in this code is designed to create and manage an AI assistant using the OpenAI API. It includes functionalities such as initializing and updating the assistant, managing tools, and handling files and instructions.
+The `Agent` class is a fundamental component of the Agency Swarm framework. It is used to define individual agents within the swarm, allowing you to assign specific roles, functionalities, and tools to each of them. An agent can represent a role such as a developer, virtual assistant, project manager, etc.
 
-## Features
+## Input and Output Specifications
 
-- **Assistant Initialization and Management**: Initialize and update an AI assistant with custom settings.
-- **Tool Integration**: Add and manage different types of tools (`BaseTool`, `Retrieval`, `CodeInterpreter`).
-- **File Handling**: Upload and manage files associated with the assistant.
-- **Instructions Management**: Read and update instructions from a file or string.
+- **name** (str): A unique identifier for the agent.
+- **description** (str): A brief description of the agent's role and responsibilities.
+- **instructions** (str): Guidance on how the agent is expected to function and interact within the swarm.
+- **files_folder** (Optional[str]): The path to a folder containing files relevant to the agent.
+- **tools** (List[BaseTool]): A list of tools that the agent can use to perform its tasks.
 
-## Class Methods
+Output from an `Agent` is usually in the form of responses to prompts or actions taken using the tools assigned to it.
 
-- `__init__`: Initialize the agent with id, name, description, tools, etc.
-- `init_oai`: Initialize or retrieve the OpenAI assistant.
-- `_update_assistant`: Update the assistant’s parameters.
-- `_check_parameters`: Check if the current parameters match the assistant’s settings.
-- `_save_settings`, `_update_settings`: Manage settings in a local JSON file.
-- `_read_instructions`: Read instructions from a file.
-- `_upload_files`: Upload files to the assistant.
-- `_add_id_to_file`, `_get_id_from_file`: Manage file IDs.
-- `get_settings_path`, `get_class_folder_path`: Utility functions for path management.
-- `set_params`: Set parameters of the agent dynamically.
-- `add_tool`: Add a tool to the agent’s toolset.
-- `add_instructions`: Add instructions to the agent.
-- `get_oai_tools`: Retrieve tools formatted for OpenAI schema.
-- `delete_assistant`: Delete the assistant and its settings.
+## Functionality
 
-## Usage
+The `Agent` class encapsulates the functionality needed to interact with the AI behind the scenes and coordinate within the agency swarm. When an `Agent` is called upon, it processes instructions, utilizes tools, and manages interactions based on the roles defined for it.
 
-To use the `Agent` class, you need to create an instance with the required parameters (id, name, description, etc.). Then, initialize the OpenAI assistant using `init_oai`. You can add tools, manage files, and set instructions as needed.
+## Usage Example
 
-## Requirements
-
-- Python 3.x
-- `deepdiff` library
-- `agency_swarm` package
-- OpenAI API key and client setup
-
-## Example
+Creating a virtual assistant agent:
 
 ```python
-from agency_swarm import Agent
+from agency_swarm.agents import Agent
+from some_tool_library import CustomTool
 
-# Create an agent instance
-my_agent = Agent(name=“MyAgent”, description=“This is a test agent.”)
-
-# Initialize OpenAI assistant
-my_agent.init_oai()
-
-# Add tools and manage settings as required
+va_agent = Agent(
+    name="VirtualAssistant",
+    description="Responsible for handling customer inquiries and automating routine tasks.",
+    instructions="Handle incoming customer queries and delegate tasks as necessary.",
+    files_folder="./va_files",
+    tools=[CustomTool]
+)
 ```
 
-## Note
+## Best Practices
 
-This README assumes familiarity with the OpenAI API and the custom `agency_swarm` package. It’s important to handle API keys and client information securely.
+- Clearly define the roles and responsibilities for each agent to avoid overlap and ensure efficiency within the swarm.
+- Use descriptive names and detailed instructions to make the agent's functionality transparent to other contributors.
+- Regularly review and update the tools associated with each agent to match the evolving needs of the agency swarm.
+- Consider the files_folder parameter to group related resources and maintain an organized structure.
 
+## Extending the Agent Class
+
+If you need to customize the `Agent` class further, you can subclass it and add additional methods or properties that cater to your specific requirements.
+
+```python
+# CustomAgent.py
+from agency_swarm.agents import Agent
+
+class CustomAgent(Agent):
+    """ Custom implementation for a specialized agent role """
+    # additional properties and methods here
+
+# Usage
+my_custom_agent = CustomAgent(
+    name="SpecialAgent",
+    # ... other parameters as needed
+)
+```
+
+## Conclusion
+
+Understanding and utilizing the `Agent` class effectively is key to harnessing the full potential of the Agency Swarm framework and creating a versatile and dynamic AI development environment.
