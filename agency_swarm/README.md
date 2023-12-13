@@ -26,7 +26,7 @@ The Agency Swarm package is a sophisticated framework designed for orchestrating
 ### 3. [Thread Class](thread/README.md)
 - **Purpose**: Manages conversations between an agent or user and a recipient agent.
 - **Key Features**:
-  - Message handling and tool execution within a thread.
+  - [Message](messages/README.md) handling and tool execution within a thread.
   - Lifecycle management of conversation runs.
 - **Usage**: Instantiate with an agent or user and a recipient agent to manage conversation flows.
 
@@ -74,4 +74,8 @@ The Agency Swarm package is a sophisticated framework designed for orchestrating
 ## Note
 
 This package is part of a larger framework and is intended for users familiar with AI agents and OpenAI API integration. The package is designed to be flexible and scalable to accommodate various functionalities within an AI-driven application.
+
+## See Also
+
+[Swarm Agency CLI](cli.md)
 
