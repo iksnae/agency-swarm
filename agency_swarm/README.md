@@ -6,7 +6,7 @@ The Agency Swarm package is a sophisticated framework designed for orchestrating
 
 ## Key Components
 
-### 1. Agency Class
+### 1. [Agency Class](agency/README.md)
 - **Purpose**: Manages a network of AI agents.
 - **Key Features**:
   - Agent and Thread management.
@@ -15,7 +15,7 @@ The Agency Swarm package is a sophisticated framework designed for orchestrating
   - Gradio interface and CLI demo capabilities.
 - **Usage**: Initialize with an agency chart and shared instructions.
 
-### 2. Agent Class
+### 2. [Agent Class](agent/README.md)
 - **Purpose**: Represents individual AI agents within the agency.
 - **Key Features**:
   - Unique identification and descriptions.
@@ -23,21 +23,21 @@ The Agency Swarm package is a sophisticated framework designed for orchestrating
   - Integration with OpenAI’s API.
 - **Usage**: Extend this class to create specific agents with customized functionalities.
 
-### 3. Thread Class
+### 3. [Thread Class](thread/README.md)
 - **Purpose**: Manages conversations between an agent or user and a recipient agent.
 - **Key Features**:
   - Message handling and tool execution within a thread.
   - Lifecycle management of conversation runs.
 - **Usage**: Instantiate with an agent or user and a recipient agent to manage conversation flows.
 
-### 4. User Class
+### 4. [User Class](user/README.md)
 - **Purpose**: Represents a user in the system.
 - **Key Features**:
   - Currently focused on the user’s name.
   - Scalable for future enhancements.
 - **Usage**: Instantiate to represent a user, with potential for future attribute expansion.
 
-### 5. Tools and Utilities
+### 5. [Tools and Utilities](utils/README.md)
 - **BaseTool Class**: Serves as an abstract base class for creating tools.
 - **CodeInterpreter and Retrieval Classes**: Simple models for specific types of operations.
 - **MessageOutput Class**: Manages and formats messages in the system.
