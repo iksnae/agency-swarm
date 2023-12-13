@@ -1,62 +1,70 @@
-# Agency 
+# Agency
 
-## Overview
+## Purpose
 
-The `Agency` class orchestrates a network of AI agents (`Agent` objects) within an application, facilitating their interaction and collaboration. It is designed to manage agents, their communication, and the overall flow of activities in a complex system.
+The `Agency` class is pivotal to the Agency Swarm framework, representing a collective of `Agent` instances. It defines the behavior and collaborative efforts of the agent swarm, orchestrating their interactions and managing the flow of communication between them, which is critical to the system's functionality and coherence.
 
-## Features
+## Input and Output Specifications
 
-- **Agent Management**: Create and manage multiple `Agent` instances, including a CEO agent.
-- **Thread Management**: Facilitate communication between agents through `Thread` instances.
-- **Shared Instructions**: Apply shared instructions across all agents.
-- **Dynamic Tool Creation**: Generates messaging tools dynamically for agent communication.
-- **Demo Interfaces**: Implement demonstration interfaces using Gradio or a command-line interface.
+- **agents** (List[Agent]): A list of `Agent` objects that are part of the Agency. Each agent should have a distinct role within the collective.
+- **agency_chart** (List[Tuple[Agent, Agent]]): Defines communication pathways where each tuple indicates the direction of initiation possible between the two agents.
+- **shared_instructions** (Optional[str]): Abstracted instructions that apply to all members of the agency collectively.
 
-## Class Methods
+Outputs are typically the results of coordinated actions between the agents, where each agent contributes to the overall process in their specialized manner.
 
-- `__init__`: Initializes the agency with an agency chart and shared instructions.
-- `get_completion`: Retrieves message completion from the main thread.
-- `demo_gradio`: Launches a Gradio-based chat interface for demonstration purposes.
-- `run_demo`: Runs a command-line based demonstration.
-- `_parse_agency_chart`: Parses the agency chart to set up agent hierarchies and relationships.
-- `_add_agent`: Adds an agent to the agency.
-- `get_agent_by_name`, `get_agents_by_names`: Retrieves agents by name.
-- `get_agent_ids`, `get_agent_names`: Returns lists of agent IDs and names.
-- `_read_instructions`: Reads shared instructions from a file.
-- `plot_agency_chart`: (Placeholder method, currently not implemented.)
-- `_create_send_message_tools`, `_create_send_message_tool`: Creates tools for sending messages between agents.
-- `get_recipient_names`: Retrieves current valid recipient agent names.
-- `_init_agents`, `_init_threads`: Initializes agents and threads.
-- `get_class_folder_path`: Utility method to get the class folder path.
+## Functionality
 
-## Usage
+The `Agency` class allows for flexible and dynamic orchestration of actions between various agents with varying specialties. It holds the structure and logic necessary to define how agents will communicate and collaborate, enabling complex workflows to be managed with ease.
 
-To use the `Agency` class, define an agency chart which outlines the hierarchy and relationships between different agents. Initialize the `Agency` with this chart and any shared instructions. Agents and threads are automatically set up based on the agency chart.
+## Usage Example
 
-## Example
+Crafting a new agency consisting of a CEO, Developer, and Virtual Assistant agents:
 
 ```python
-from agency_swarm.agents import Agent
-from agency_swarm.agency import Agency
+from agency_swarm import Agent, Agency
 
-# Define your agents and agency chart
-agent1 = Agent(name=“Agent1”)
-agent2 = Agent(name=“Agent2”)
-agency_chart = [agent1, [agent2]]
+# Define the agent instances
+ceo = Agent(...)
+developer = Agent(...)
+virtual_assistant = Agent(...)
 
-# Initialize the agency
-my_agency = Agency(agency_chart=agency_chart)
-
-# Use the agency’s functionalities as needed
+# Define the agency
+agency = Agency(
+    agents=[ceo, developer, virtual_assistant],
+    agency_chart=[
+        (ceo, developer),
+        (developer, virtual_assistant),
+    ],
+    shared_instructions='agency_manifesto.md'
+)
 ```
 
-## Requirements
+## Best Practices
 
-- Python 3.x
-- `pydantic` library
-- `agency_swarm` package
-- Gradio library for demo interface (optional)
+- Define clear communication pathways and responsibilities for each agent within the agency to streamline processes and avoid confusion.
+- Regularly refine the `agency_chart` to reflect the current structure and needs of agent interactions.
+- Utilize `shared_instructions` to ensure uniformity of understanding and action across the agency.
 
-## Note
+## Extending the Agency Class
 
-This README assumes familiarity with the `agency_swarm` package and its dependencies. The actual implementation of methods like `plot_agency_chart` might require further development.
+The `Agency` class can be extended through subclassing to fine-tune its functionality to better suit specific project demands.
+
+```python
+# CustomAgency.py
+from agency_swarm import Agency
+
+class CustomAgency(Agency):
+    """ Custom implementation for a specialized agency structure """
+    # additional properties and methods here
+
+# Usage
+my_custom_agency = CustomAgency(
+    agents=[...],
+    agency_chart=[...],
+    # ... other parameters as needed
+)
+```
+
+## Conclusion
+
+The `Agency` class provides a way to effectively manage a group of agents, making it a cornerstone of the Agency Swarm framework. Mastery of this class is essential for orchestrating complex development processes and workflows.
