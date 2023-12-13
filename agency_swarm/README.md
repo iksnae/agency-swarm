@@ -15,7 +15,7 @@ The Agency Swarm package is a sophisticated framework designed for orchestrating
   - Gradio interface and CLI demo capabilities.
 - **Usage**: Initialize with an agency chart and shared instructions.
 
-### 2. [Agent Class](agent/README.md)
+### 2. [Agent Class](agents/README.md)
 - **Purpose**: Represents individual AI agents within the agency.
 - **Key Features**:
   - Unique identification and descriptions.
@@ -37,7 +37,7 @@ The Agency Swarm package is a sophisticated framework designed for orchestrating
   - Scalable for future enhancements.
 - **Usage**: Instantiate to represent a user, with potential for future attribute expansion.
 
-### 5. [Tools and Utilities](utils/README.md)
+### 5. [Tools](tools/README.md) and [Utilities](utils/README.md)
 - **BaseTool Class**: Serves as an abstract base class for creating tools.
 - **CodeInterpreter and Retrieval Classes**: Simple models for specific types of operations.
 - **MessageOutput Class**: Manages and formats messages in the system.
