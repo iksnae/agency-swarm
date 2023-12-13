@@ -37,7 +37,7 @@ The Agency Swarm package is a sophisticated framework designed for orchestrating
   - Scalable for future enhancements.
 - **Usage**: Instantiate to represent a user, with potential for future attribute expansion.
 
-### 5. [Tools](tools/README.md) and [Utilities](utils/README.md)
+### 5. [Tools](tools/README.md) and [Utilities](util/README.md)
 - **BaseTool Class**: Serves as an abstract base class for creating tools.
 - **CodeInterpreter and Retrieval Classes**: Simple models for specific types of operations.
 - **MessageOutput Class**: Manages and formats messages in the system.
